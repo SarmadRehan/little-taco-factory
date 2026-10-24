@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* A blend, by Sarmad's choice for this demo. The Little Taco Factory's own logo leads: chile red
+   #bc1e24, black, flag green #096334, the yellow of the "#2" (#e9ae29) and its cream #ece3d0
+   (masa is a lighter tint of it). The brief's turquoise is the accent: #3fb8b0 for fills with
+   dark text, and turq-ink #0f7470 for text on the masa background only (4.9:1). */
+@theme {
+  --color-masa: #f6efe1;
+  --color-cream: #ece3d0;
+  --color-ink: #1c1412;
+  --color-clay: #5c4f47;
+  --color-chile: #bc1e24;
+  --color-chile-dark: #9a1a1f;
+  --color-nopal: #096334;
+  --color-maiz: #e9ae29;
+  --color-turq: #3fb8b0;
+  --color-turq-ink: #0f7470;
+}
+
+/* `inline` so utilities reference the next/font variables directly rather than resolving them on :root. */
+@theme inline {
+  --font-display: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+  --font-script: var(--font-yellowtail), "Brush Script MT", cursive;
+  --font-sans: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-masa);
+  color: var(--color-ink);
+}
+
+/* A sarape stripe in the logo's colors plus the brief's turquoise, split by thin masa lines.
+   Unlayered, so it wins over h-* utilities. */
+.sarape {
+  height: 14px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-chile) 0 26%,
+    var(--color-masa) 26% 33%,
+    var(--color-maiz) 33% 52%,
+    var(--color-masa) 52% 59%,
+    var(--color-turq) 59% 74%,
+    var(--color-masa) 74% 81%,
+    var(--color-nopal) 81% 100%
+  );
+}
+
+/* Morning light: a warm sunrise glow from the top right of the hero. */
+.morning-light {
+  background:
+    radial-gradient(60rem 30rem at 90% -10%, rgb(233 174 41 / 0.28), transparent 70%),
+    radial-gradient(40rem 24rem at 0% 110%, rgb(63 184 176 / 0.14), transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
